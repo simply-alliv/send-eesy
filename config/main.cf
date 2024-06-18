@@ -1,0 +1,29 @@
+# Basic settings
+myhostname = smtp.example.com
+mydomain = example.com
+myorigin = /etc/mailname
+inet_interfaces = all
+inet_protocols = ipv4
+mydestination = $myhostname, localhost.$mydomain, localhost
+relayhost = 
+
+# Relay settings
+relay_domains = hash:/etc/postfix/relay-domains
+smtp_use_tls = yes
+smtp_tls_security_level = may
+smtp_tls_note_starttls_offer = yes
+
+# Disable local mail delivery
+local_recipient_maps =
+
+# Disable SMTPUTF8 to prevent Postfix from advertising the SMTPUTF8 capability
+smtputf8_enable = no
+
+# Enable logging
+maillog_file = /var/log/mail.log
+
+# Access control
+smtpd_recipient_restrictions =
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination
